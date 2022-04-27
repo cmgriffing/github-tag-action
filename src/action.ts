@@ -67,12 +67,19 @@ export default async function main() {
   ).replace(/[^a-zA-Z0-9-]/g, '-');
 
   const prefixRegex = new RegExp(`^${tagPrefix}`);
+  const suffixRegex = new RegExp(`${tagSuffix}$`);
 
   const validTags = await getValidTags(
     prefixRegex,
     /true/i.test(shouldFetchAllTags)
   );
-  const latestTag = getLatestTag(validTags, prefixRegex, tagPrefix);
+  const latestTag = getLatestTag(
+    validTags,
+    prefixRegex,
+    tagPrefix,
+    suffixRegex,
+    tagSuffix
+  );
   const latestPrereleaseTag = getLatestPrereleaseTag(
     validTags,
     identifier,

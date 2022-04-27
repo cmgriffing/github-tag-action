@@ -56,11 +56,16 @@ export function isPr(ref: string) {
 export function getLatestTag(
   tags: Tags,
   prefixRegex: RegExp,
-  tagPrefix: string
+  tagPrefix: string,
+  suffixRegex: RegExp,
+  tagSuffix: string
 ) {
   return (
-    tags.find((tag) => !prerelease(tag.name.replace(prefixRegex, ''))) || {
-      name: `${tagPrefix}0.0.0`,
+    tags.find(
+      (tag) =>
+        !prerelease(tag.name.replace(prefixRegex, '').replace(suffixRegex, ''))
+    ) || {
+      name: `${tagPrefix}0.0.0${tagSuffix}`,
       commit: {
         sha: 'HEAD',
       },
