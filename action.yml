@@ -28,6 +28,10 @@ inputs:
     description: "A prefix to the tag name (default: `v`)."
     required: false
     default: "v"
+  tag_suffix:
+    description: "A suffix to the tag name."
+    required: false
+    default: ""
   append_to_pre_release_tag:
     description: "A suffix to a pre-release tag name (default: `<branch>`)."
     required: false

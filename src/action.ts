@@ -21,6 +21,7 @@ export default async function main() {
     | ReleaseType
     | 'false';
   const tagPrefix = core.getInput('tag_prefix');
+  const tagSuffix = core.getInput('tag_suffix');
   const customTag = core.getInput('custom_tag');
   const releaseBranches = core.getInput('release_branches');
   const preReleaseBranches = core.getInput('pre_release_branches');
@@ -185,7 +186,7 @@ export default async function main() {
   core.info(`New version is ${newVersion}.`);
   core.setOutput('new_version', newVersion);
 
-  const newTag = `${tagPrefix}${newVersion}`;
+  const newTag = `${tagPrefix}${newVersion}${tagSuffix}`;
   core.info(`New tag after applying prefix is ${newTag}.`);
   core.setOutput('new_tag', newTag);
 
