@@ -114,7 +114,9 @@ export default async function main() {
       return;
     }
 
-    previousVersion = parse(previousTag.name.replace(prefixRegex, ''));
+    previousVersion = parse(
+      previousTag.name.replace(prefixRegex, '').replace(suffixRegex, '')
+    );
 
     if (!previousVersion) {
       core.setFailed('Could not parse previous tag.');
